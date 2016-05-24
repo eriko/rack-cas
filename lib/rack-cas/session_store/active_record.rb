@@ -41,8 +41,8 @@ module RackCAS
       else
         Session.find_or_initialize_by_session_id(sid)
       end
-      session.data = pack(session_data)
-      session.cas_ticket = cas_ticket
+      session[:data] = pack(session_data)
+      session[:cas_ticket] = cas_ticket
       success = session.save
 
       success ? session.session_id : false
